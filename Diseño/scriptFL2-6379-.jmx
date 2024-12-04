@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.2">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.delayedStart">false</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer cert_internal_oracle_to_cloud_users_seg_topic_events" enabled="true">
+          <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+          <stringProp name="kafkaTopic">cert_internal_oracle_to_cloud_users_seg_topic_events</stringProp>
+          <stringProp name="partitionString"></stringProp>
+          <stringProp name="kafkaMessageKey"></stringProp>
+          <stringProp name="kafkaMessage">{
+  &quot;CDUSUARIO_SEG&quot;:${CDUSUARIO_SEG},
+  &quot;CDPERSONA&quot;:${CDPERSONA},
+  &quot;DSLOGIN&quot;:&quot;${DSLOGIN}&quot;,
+  &quot;DSCONTRASENA&quot;:&quot;${DSCONTRASENA}&quot;,
+  &quot;SNINHABILITADO&quot;:&quot;${SNINHABILITADO}&quot;,
+  &quot;CDUSUARIO_INGRESA&quot;:${CDUSUARIO_INGRESA},
+  &quot;FEINGRESA&quot;:${FEINGRESA},
+  &quot;CDUSUARIO_MODIFICA&quot;:${CDUSUARIO_MODIFICA},
+  &quot;FEMODIFICA&quot;:${FEMODIFICA},
+  &quot;FEINGRESOCONTRASENA&quot;:${FEINGRESOCONTRASENA},
+  &quot;FEEXPIRACONTRASENA&quot;:${FEEXPIRACONTRASENA},
+  &quot;CDUUID&quot;:${CDUUID},
+  &quot;UUID_EXPIRA&quot;:${UUID_EXPIRA},
+  &quot;FECHA_CAMBIO&quot;:${FECHA_CAMBIO},
+  &quot;NMINTENTOS_RECUPERAR_PASS&quot;:${NMINTENTOS_RECUPERAR_PASS},
+  &quot;CDVALIDAR_CORREO&quot;:${CDVALIDAR_CORREO},
+  &quot;NMINTENTOS_VALIDAR_CORREO&quot;:${NMINTENTOS_VALIDAR_CORREO},
+  &quot;FEVALIDAR_CORREO_EXPIRA&quot;:${FEVALIDAR_CORREO_EXPIRA},
+  &quot;NMINTENTOS_ENVIO_CORREO&quot;:$NMINTENTOS_ENVIO_CORREO},
+  &quot;SNVALIDO_CORREO&quot;:${SNVALIDO_CORREO},
+  &quot;CDUSUARIO_SEG_PADRE&quot;:${CDUSUARIO_SEG_PADRE},
+  &quot;CDRECUPERAR_CORREO&quot;:${CDRECUPERAR_CORREO},
+  &quot;SNCAMBIAR_CONTRASENA&quot;:&quot;${SNCAMBIAR_CONTRASENA}&quot;
+}</stringProp>
+          <collectionProp name="messageHeaders"/>
+        </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">;</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="filename">C:/Users/alejandra.ospina/Documents/GitHub/testing-performance-oracle-to-cloud-ks-customer-account-0/Diseño/cert_internal_oracle_to_cloud_users_seg_topic_events.csv</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">CDUSUARIO_SEG,CDPERSONA,DSLOGIN,DSCONTRASENA,SNINHABILITADO,CDUSUARIO_INGRESA,FEINGRESA,CDUSUARIO_MODIFICA,FEMODIFICA,FEINGRESOCONTRASENA,FEEXPIRACONTRASENA,CDUUID,UUID_EXPIRA,FECHA_CAMBIO,NMINTENTOS_RECUPERAR_PASS,CDVALIDAR_CORREO,NMINTENTOS_VALIDAR_CORREO,FEVALIDAR_CORREO_EXPIRA,NMINTENTOS_ENVIO_CORREO,SNVALIDO_CORREOCDUSUARIO_SEG_PADRE,CDRECUPERAR_CORREO,SNCAMBIAR_CONTRASENA</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <com.di.jmeter.kafka.config.KafkaProducerConfig guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.config.KafkaProducerConfig" testname="Kafka Producer Config" enabled="true">
+            <stringProp name="batchSize">16384</stringProp>
+            <stringProp name="clientId">flypass_consumer_group</stringProp>
+            <collectionProp name="extraConfigs">
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.mechanism</stringProp>
+                <stringProp name="configValue">SCRAM-SHA-512</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.jaas.config</stringProp>
+                <stringProp name="configValue">org.apache.kafka.common.security.scram.ScramLoginModule required  username=&apos;flypass&apos;  password=&apos;bVH!R@*B4jQTLrkd&apos;; </stringProp>
+              </elementProp>
+            </collectionProp>
+            <stringProp name="kafkaBrokers">b-2.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096, b-1.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096</stringProp>
+            <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+            <stringProp name="kafkaSslKeystore"></stringProp>
+            <stringProp name="kafkaSslKeystorePassword">Chang3M3</stringProp>
+            <stringProp name="kafkaSslPrivateKeyPass">Chang3M3</stringProp>
+            <stringProp name="kafkaSslTruststore"></stringProp>
+            <stringProp name="kafkaSslTruststorePassword">Chang3M3</stringProp>
+            <stringProp name="securityType">securityType.sasl_ssl</stringProp>
+            <stringProp name="serializerKey">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+            <stringProp name="serializerValue">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+          </com.di.jmeter.kafka.config.KafkaProducerConfig>
+          <hashTree/>
+        </hashTree>
+        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer cert_internal_oracle_to_cloud_account_contacts_per_jur_topic_events" enabled="false">
+          <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+          <stringProp name="kafkaTopic">cert_internal_oracle_to_cloud_account_contacts_per_jur_topic_events</stringProp>
+          <stringProp name="partitionString"></stringProp>
+          <stringProp name="kafkaMessageKey"></stringProp>
+          <stringProp name="kafkaMessage">{
+    &quot;CDCONTACTO&quot;: ${CDCONTACTO},
+    &quot;CDPERSONA&quot;: ${CDPERSONA},
+    &quot;CDUSUARIO_SEG&quot;: ${CDUSUARIO_SEG},
+    &quot;DSNOMBRES&quot;: &quot;${DSNOMBRES}&quot;,
+    &quot;DSAPELLIDOS&quot;: &quot;${DSAPELLIDOS}&quot;,
+    &quot;DSCARGO&quot;: &quot;${DSCARGO}&quot;,
+    &quot;DSCORREO&quot;: &quot;${DSCORREO}&quot;,
+    &quot;DSTELEFONO&quot;: ${DSTELEFONO},
+    &quot;DSEXTENCION&quot;: ${DSEXTENCION},
+    &quot;DSCELULAR&quot;: ${DSCELULAR},
+    &quot;CDUSUARIO_INGRESA&quot;: ${CDUSUARIO_INGRESA},
+    &quot;FEINGRESA&quot;: &quot;${FEINGRESA}&quot;,
+    &quot;CDUSUARIO_MODIFICA&quot;: ${CDUSUARIO_MODIFICA},
+    &quot;FEMODIFICA&quot;: &quot;${FEMODIFICA}&quot;,
+    &quot;CDNRO_DOC&quot;: &quot;${CDNRO_DOC}&quot;,
+    &quot;CDROL_EMPRESA&quot;: ${CDROL_EMPRESA},
+    &quot;DSINDICATIVO_TELEFONO&quot;: &quot;${DSINDICATIVO_TELEFONO}&quot;
+}
+</stringProp>
+          <collectionProp name="messageHeaders"/>
+        </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="filename">C:/Users/alejandra.ospina/Documents/GitHub/testing-performance-oracle-to-cloud-ks-customer-account-0/Diseño/cert_internal_oracle_to_cloud_account_contacts_per_jur_topic_events.csv</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="variableNames">CDCONTACTO,CDPERSONA,CDUSUARIO_SEG,DSNOMBRES,DSAPELLIDOS,DSCARGO,DSCORREO,DSTELEFONO,DSEXTENCION,DSCELULAR,CDUSUARIO_INGRESA,FEINGRESA,CDUSUARIO_MODIFICA,FEMODIFICA,CDNRO_DOC,CDROL_EMPRESA,DSINDICATIVO_TELEFONO</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <stringProp name="delimiter">;</stringProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <com.di.jmeter.kafka.config.KafkaProducerConfig guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.config.KafkaProducerConfig" testname="Kafka Producer Config" enabled="true">
+            <stringProp name="batchSize">16384</stringProp>
+            <stringProp name="clientId">flypass_consumer_group</stringProp>
+            <collectionProp name="extraConfigs">
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.mechanism</stringProp>
+                <stringProp name="configValue">SCRAM-SHA-512</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.jaas.config</stringProp>
+                <stringProp name="configValue">org.apache.kafka.common.security.scram.ScramLoginModule required  username=&apos;flypass&apos;  password=&apos;bVH!R@*B4jQTLrkd&apos;; </stringProp>
+              </elementProp>
+            </collectionProp>
+            <stringProp name="kafkaBrokers">b-2.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096, b-1.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096</stringProp>
+            <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+            <stringProp name="kafkaSslKeystore"></stringProp>
+            <stringProp name="kafkaSslKeystorePassword">Chang3M3</stringProp>
+            <stringProp name="kafkaSslPrivateKeyPass">Chang3M3</stringProp>
+            <stringProp name="kafkaSslTruststore"></stringProp>
+            <stringProp name="kafkaSslTruststorePassword">Chang3M3</stringProp>
+            <stringProp name="securityType">securityType.sasl_ssl</stringProp>
+            <stringProp name="serializerKey">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+            <stringProp name="serializerValue">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+          </com.di.jmeter.kafka.config.KafkaProducerConfig>
+          <hashTree/>
+        </hashTree>
+        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer cert_internal_oracle_to_cloud_people_topic_events" enabled="false">
+          <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+          <stringProp name="kafkaTopic">cert_internal_oracle_to_cloud_people_topic_events</stringProp>
+          <stringProp name="partitionString"></stringProp>
+          <stringProp name="kafkaMessageKey"></stringProp>
+          <stringProp name="kafkaMessage">{
+  &quot;CDPERSONA&quot;: ${CDPERSONA},
+  &quot;CDNRO_DOC&quot;: &quot;${CDNRO_DOC}&quot;,
+  &quot;CDTIPO_PERSONA&quot;: ${CDTIPO_PERSONA},
+  &quot;CDTIPO_DOC&quot;: ${CDTIPO_DOC},
+  &quot;DSNOMBRES&quot;: &quot;${DSNOMBRES}&quot;,
+  &quot;DSAPELLIDOS&quot;: &quot;${DSAPELLIDOS}&quot;,
+  &quot;DSCORREO&quot;: &quot;${DSCORREO}&quot;,
+  &quot;DSDIRECCION&quot;: &quot;${DSDIRECCION}&quot;,
+  &quot;DSBARRIO&quot;: ${DSBARRIO},
+  &quot;DSTELEFONO&quot;: ${DSTELEFONO},
+  &quot;DSCELULAR&quot;: &quot;${DSCELULAR}&quot;,
+  &quot;DSRAZON_SOCIAL&quot;: ${DSRAZON_SOCIAL},
+  &quot;CDNRO_DOC_REPRESENT&quot;: ${CDNRO_DOC_REPRESENT},
+  &quot;DSNOM_REPRESENTANTE&quot;: ${DSNOM_REPRESENTANTE},
+  &quot;CDCIUDAD&quot;: ${CDCIUDAD},
+  &quot;CDUSUARIO_INGRESA&quot;: ${CDUSUARIO_INGRESA},
+  &quot;FEINGRESA&quot;: ${FEINGRESA},
+  &quot;CDUSUARIO_MODIFICA&quot;: ${CDUSUARIO_MODIFICA},
+  &quot;FEMODIFICA&quot;: ${FEMODIFICA},
+  &quot;CDOCUPACION&quot;: ${CDOCUPACION},
+  &quot;CDESTADOCIVIL&quot;: ${CDESTADOCIVIL},
+  &quot;SNHIJOS&quot;: ${SNHIJOS},
+  &quot;FENACIMIENTO&quot;: ${FENACIMIENTO},
+  &quot;CDTIPO_DOC_CONT&quot;: ${CDTIPO_DOC_CONT},
+  &quot;CDAREA_EMPRESA&quot;: ${CDAREA_EMPRESA},
+  &quot;DSDIGITO_VERIFICACION&quot;: ${DSDIGITO_VERIFICACION},
+  &quot;SNCORREO&quot;: &quot;${SNCORREO}&quot;
+}
+</stringProp>
+          <collectionProp name="messageHeaders"/>
+        </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="filename">C:/Users/alejandra.ospina/Documents/GitHub/testing-performance-oracle-to-cloud-ks-customer-account-0/Diseño/cert_internal_oracle_to_cloud_people_topic_events.csv</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="variableNames">CDPERSONA,CDNRO_DOC,CDTIPO_PERSONA,CDTIPO_DOC,DSNOMBRES,DSAPELLIDOS,DSCORREO,DSDIRECCION,DSBARRIO,DSTELEFONO,DSCELULAR,DSRAZON_SOCIAL,CDNRO_DOC_REPRESENT,DSNOM_REPRESENTANTE,CDCIUDAD,CDUSUARIO_INGRESA,FEINGRESA,CDUSUARIO_MODIFICA,FEMODIFICA,CDOCUPACION,CDESTADOCIVIL,SNHIJOS,FENACIMIENTO,CDTIPO_DOC_CONT,CDAREA_EMPRESA,DSDIGITO_VERIFICACION,SNCORREO</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <stringProp name="delimiter">;</stringProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <com.di.jmeter.kafka.config.KafkaProducerConfig guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.config.KafkaProducerConfig" testname="Kafka Producer Config" enabled="true">
+            <stringProp name="batchSize">16384</stringProp>
+            <stringProp name="clientId">flypass_consumer_group</stringProp>
+            <collectionProp name="extraConfigs">
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.mechanism</stringProp>
+                <stringProp name="configValue">SCRAM-SHA-512</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.jaas.config</stringProp>
+                <stringProp name="configValue">org.apache.kafka.common.security.scram.ScramLoginModule required  username=&apos;flypass&apos;  password=&apos;bVH!R@*B4jQTLrkd&apos;; </stringProp>
+              </elementProp>
+            </collectionProp>
+            <stringProp name="kafkaBrokers">b-2.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096, b-1.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096</stringProp>
+            <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+            <stringProp name="kafkaSslKeystore"></stringProp>
+            <stringProp name="kafkaSslKeystorePassword">Chang3M3</stringProp>
+            <stringProp name="kafkaSslPrivateKeyPass">Chang3M3</stringProp>
+            <stringProp name="kafkaSslTruststore"></stringProp>
+            <stringProp name="kafkaSslTruststorePassword">Chang3M3</stringProp>
+            <stringProp name="securityType">securityType.sasl_ssl</stringProp>
+            <stringProp name="serializerKey">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+            <stringProp name="serializerValue">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+          </com.di.jmeter.kafka.config.KafkaProducerConfig>
+          <hashTree/>
+        </hashTree>
+        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer cert_internal_oracle_to_cloud_users_topic_event" enabled="false">
+          <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+          <stringProp name="kafkaTopic">cert_internal_oracle_to_cloud_users_topic_event</stringProp>
+          <stringProp name="partitionString"></stringProp>
+          <stringProp name="kafkaMessageKey"></stringProp>
+          <stringProp name="kafkaMessage">{
+  &quot;CDUSUARIO&quot;: ${CDUSUARIO},
+  &quot;CDUSUARIO_SEG&quot;: ${CDUSUARIO_SEG},
+  &quot;CDESTADO&quot;: ${CDESTADO},
+  &quot;CDTIPO_PAGO&quot;: ${CDTIPO_PAGO},
+  &quot;CDTIPO_TRA_BANCO&quot;: ${CDTIPO_TRA_BANCO},
+  &quot;NMNRO_CUENTA&quot;: ${NMNRO_CUENTA},
+  &quot;SNVEH_LIMITADOS&quot;: &quot;${SNVEH_LIMITADOS}&quot;,
+  &quot;SNPENDIENTE&quot;: ${SNPENDIENTE},
+  &quot;SNAPROBADO&quot;: ${SNAPROBADO},
+  &quot;SNRECHAZADO&quot;: ${SNRECHAZADO},
+  &quot;CDTIPO_CUENTA&quot;: ${CDTIPO_CUENTA},
+  &quot;VRSALDO_CANJE&quot;: &quot;${VRSALDO_CANJE}&quot;,
+  &quot;VRSALDO_DISPONIBLE&quot;: &quot;${VRSALDO_DISPONIBLE}&quot;,
+  &quot;VRCUPO_SOBREGIRO&quot;: &quot;${VRCUPO_SOBREGIRO}&quot;,
+  &quot;VRLIMITE_SALDO_BAJO&quot;: &quot;${VRLIMITE_SALDO_BAJO}&quot;,
+  &quot;VRMONTO_MIN_RECARGA&quot;: &quot;${VRMONTO_MIN_RECARGA}&quot;,
+  &quot;CDESTADO_CUENTA&quot;: ${CDESTADO_CUENTA},
+  &quot;FEINGRESO_MORA&quot;: ${FEINGRESO_MORA},
+  &quot;NMCONTADOR&quot;: ${NMCONTADOR},
+  &quot;VRPROMEDIO_CONSUMO_MENSUAL&quot;: &quot;${VRPROMEDIO_CONSUMO_MENSUAL}&quot;,
+  &quot;CDUSUARIO_INGRESA&quot;: ${CDUSUARIO_INGRESA},
+  &quot;FEINGRESA&quot;: ${FEINGRESA},
+  &quot;CDUSUARIO_MODIFICA&quot;: ${CDUSUARIO_MODIFICA},
+  &quot;FEMODIFICA&quot;: ${FEMODIFICA},
+  &quot;SNNUNCA_MAS_ACTIVO&quot;: &quot;${SNNUNCA_MAS_ACTIVO}&quot;,
+  &quot;SNSINCRONIZADO&quot;: &quot;${SNSINCRONIZADO}&quot;,
+  &quot;SNCALCULAR_LIMITE_BAJO_SALDO&quot;: &quot;${SNCALCULAR_LIMITE_BAJO_SALDO}&quot;,
+  &quot;SNADMIN_CENTRO_COSTOS&quot;: &quot;${SNADMIN_CENTRO_COSTOS}&quot;,
+  &quot;SNRECORDAR_BIENVENIDA_PASEYA&quot;: ${SNRECORDAR_BIENVENIDA_PASEYA},
+  &quot;SNEXENTO_COMISION&quot;: &quot;${SNEXENTO_COMISION}&quot;,
+  &quot;FEULTI_SINC_SALESFORCE&quot;: ${FEULTI_SINC_SALESFORCE},
+  &quot;DSREFERIDO&quot;: ${DSREFERIDO},
+  &quot;NMCORREO_MORA&quot;: ${NMCORREO_MORA},
+  &quot;SNCORREO_MORA&quot;: &quot;${SNCORREO_MORA}&quot;,
+  &quot;CDESTADO_ENVIO_EMISOR&quot;: ${CDESTADO_ENVIO_EMISOR},
+  &quot;CDCODIGO_EMISOR&quot;: ${CDCODIGO_EMISOR},
+  &quot;CDEJECUCION_TAREA_PROGRAMADA&quot;: ${CDEJECUCION_TAREA_PROGRAMADA},
+  &quot;VRSALDO_DISPONIBLE_BILLETERA&quot;: ${VRSALDO_DISPONIBLE_BILLETERA},
+  &quot;FEULTIMA_SINCRONIZACION&quot;: ${FEULTIMA_SINCRONIZACION}
+}
+</stringProp>
+          <collectionProp name="messageHeaders"/>
+        </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="filename">C:/Users/alejandra.ospina/Documents/GitHub/testing-performance-oracle-to-cloud-ks-customer-account-0/Diseño/cert_internal_oracle_to_cloud_users_topic_event.csv</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="variableNames">CDUSUARIO,CDUSUARIO_SEG,CDESTADO,CDTIPO_PAGO,CDTIPO_TRA_BANCO,NMNRO_CUENTA,SNVEH_LIMITADOS,SNPENDIENTE,SNAPROBADO,SNRECHAZADO,CDTIPO_CUENTA,VRSALDO_CANJE,VRSALDO_DISPONIBLE,VRCUPO_SOBREGIRO,VRLIMITE_SALDO_BAJO,VRMONTO_MIN_RECARGA,CDESTADO_CUENTA,FEINGRESO_MORA,NMCONTADOR,VRPROMEDIO_CONSUMO_MENSUAL,CDUSUARIO_INGRESA,FEINGRESA,CDUSUARIO_MODIFICA,FEMODIFICA,SNNUNCA_MAS_ACTIVO,SNSINCRONIZADO,SNCALCULAR_LIMITE_BAJO_SALDO,SNADMIN_CENTRO_COSTOS,SNRECORDAR_BIENVENIDA_PASEYA,SNEXENTO_COMISION,FEULTI_SINC_SALESFORCE,DSREFERIDO,NMCORREO_MORA,SNCORREO_MORA,CDESTADO_ENVIO_EMISOR,CDCODIGO_EMISOR,CDEJECUCION_TAREA_PROGRAMADA,VRSALDO_DISPONIBLE_BILLETERA,FEULTIMA_SINCRONIZACION</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <stringProp name="delimiter">;</stringProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <com.di.jmeter.kafka.config.KafkaProducerConfig guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.config.KafkaProducerConfig" testname="Kafka Producer Config" enabled="true">
+            <stringProp name="batchSize">16384</stringProp>
+            <stringProp name="clientId">flypass_consumer_group</stringProp>
+            <collectionProp name="extraConfigs">
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.mechanism</stringProp>
+                <stringProp name="configValue">SCRAM-SHA-512</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="com.di.jmeter.kafka.utils.VariableSettings">
+                <stringProp name="configKey">sasl.jaas.config</stringProp>
+                <stringProp name="configValue">org.apache.kafka.common.security.scram.ScramLoginModule required  username=&apos;flypass&apos;  password=&apos;bVH!R@*B4jQTLrkd&apos;; </stringProp>
+              </elementProp>
+            </collectionProp>
+            <stringProp name="kafkaBrokers">b-2.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096, b-1.certclusterflypass.bzb43b.c22.kafka.us-east-1.amazonaws.com:9096</stringProp>
+            <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
+            <stringProp name="kafkaSslKeystore"></stringProp>
+            <stringProp name="kafkaSslKeystorePassword">Chang3M3</stringProp>
+            <stringProp name="kafkaSslPrivateKeyPass">Chang3M3</stringProp>
+            <stringProp name="kafkaSslTruststore"></stringProp>
+            <stringProp name="kafkaSslTruststorePassword">Chang3M3</stringProp>
+            <stringProp name="securityType">securityType.sasl_ssl</stringProp>
+            <stringProp name="serializerKey">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+            <stringProp name="serializerValue">org.apache.kafka.common.serialization.StringSerializer</stringProp>
+          </com.di.jmeter.kafka.config.KafkaProducerConfig>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
